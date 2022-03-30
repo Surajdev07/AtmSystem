@@ -1,0 +1,40 @@
+<div class="container">
+
+  <div class="card">
+
+    <form (ngSubmit)="doSubmitForm()">
+
+      <h1>Customer Details</h1>
+
+      <mat-form-field class="field" appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input name="firstName" [(ngModel)]="data.firstName" matInput>
+      </mat-form-field>
+      <mat-form-field class="field" appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input name="lastName" [(ngModel)]="data.lastName" matInput>
+      </mat-form-field>
+      <mat-form-field class="field" appearance="outline">
+        <mat-label>Mobile Number</mat-label>
+        <input name="mobileNumber" [(ngModel)]="data.mobileNumber" matInput>
+      </mat-form-field>
+
+
+      <div class="text-center">
+
+
+
+        <button type="submit" mat-raised-button color="primary" (click)="doSubmitForm()">Submit</button>
+        <button type="reset" mat-raised-button color="accent">Cancel</button>
+
+
+      </div>
+
+    </form>
+
+    <!-- {{ data | json }} -->
+
+
+  </div>
+
+</div>
