@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AtmService } from 'src/app/atm.service';
+import { Deposit } from './deposit';
+import { DepositService } from 'src/app/deposit.service';
 
 @Component({
   selector: 'app-depositform',
@@ -8,35 +9,22 @@ import { AtmService } from 'src/app/atm.service';
 })
 export class DepositformComponent implements OnInit {
 
-  data = {
-    accountNumber: "",
-    amount: ""
+  deposit : Deposit = {};
 
-  }
-
-
-  constructor(private atm: AtmService) { }
+  constructor(private depositservice : DepositService) { }
 
   ngOnInit(): void {
   }
 
-
-
-  doSubmitForm() {
-    console.log("try to submit form");
-    console.log("DATA ", this.data);
-
-    this.atm.depositAmount(this.data).subscribe(
-      response => {
-        console.log(response);
-
-      },
-      error => {
-        console.log(error);
-
-      }
-    )
-
-
-  }
+  onSubmit(){
+    console.log(this.deposit);
+    this.updateDeposit();
+   }
+   updateDeposit(){
+     this.depositservice.depositAmount(this.deposit).subscribe(data => {
+      console.log(data);
+     },
+     error => console.log(error)
+     );
+   }
 }

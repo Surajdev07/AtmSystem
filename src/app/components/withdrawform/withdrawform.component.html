@@ -2,17 +2,17 @@
 
   <div class="card">
 
-
+    <form (ngSubmit)="onSubmit()">
 
     <h1>Withdraw Amount</h1>
 
     <mat-form-field class="field" appearance="outline">
-      <mat-label>Enter Account Number</mat-label>
-      <input matInput>
+      <mat-label>Enter Account Id</mat-label>
+      <input name="accountId" [(ngModel)]="withdraw.accountId" matInput>
     </mat-form-field>
     <mat-form-field class="field" appearance="outline">
       <mat-label>Please Enter the amount</mat-label>
-      <input matInput>
+      <input name="amount" [(ngModel)]="withdraw.amount" matInput>
     </mat-form-field>
 
 
@@ -20,14 +20,14 @@
 
 
 
-      <button type="submit" mat-raised-button color="primary">Submit</button>
+      <button type="submit" mat-raised-button color="primary" >Submit</button>
       <button type="reset" mat-raised-button color="accent">Cancel</button>
 
 
     </div>
 
 
-
+  </form>
 
 
 

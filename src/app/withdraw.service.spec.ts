@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AtmService } from './atm.service';
+import { WithdrawService } from './withdraw.service';
 
-describe('AtmService', () => {
-  let service: AtmService;
+describe('WithdrawService', () => {
+  let service: WithdrawService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(AtmService);
+    service = TestBed.inject(WithdrawService);
   });
 
   it('should be created', () => {

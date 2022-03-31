@@ -1,5 +1,10 @@
+import { error } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
-import { AtmService } from 'src/app/atm.service';
+import { Router } from '@angular/router';
+import { CustomerService } from 'src/app/customer.service';
+
+
+import { Customer } from './customer';
 
 @Component({
   selector: 'app-customer',
@@ -8,33 +13,31 @@ import { AtmService } from 'src/app/atm.service';
 })
 export class CustomerComponent implements OnInit {
 
-  data = {
-    firstName: "",
-    lastName: "",
-    mobileNumber: ""
+  customer : Customer = {};
 
-  }
-
-
-  constructor(private atm: AtmService) { }
+  constructor(private customerservice : CustomerService) { }
 
   ngOnInit(): void {
   }
 
-  doSubmitForm() {
-    console.log("try to submit form");
-    console.log("DATA ", this.data);
+  onSubmit(){
+    console.log(this.customer);
+    this.saveCustomer();
+   }
+   saveCustomer(){
+     this.customerservice.createCustomer(this.customer).subscribe(data => {
+      console.log(data);
+     },
+     error => console.log(error)
+     );
+   }
 
-    this.atm.customerDetail(this.data).subscribe(
-      response => {
-        console.log(response);
+  // saveCustomer(){
+  //   this.customerService.createCustomer(this.customer).subscribe(data => {
+  //     console.log(data);
+  //   },
+  //   error => console.log(error));
+  // }
 
-      },
-      error => {
-        console.log(error);
-
-      }
-    )
-
-  }
+ 
 }
